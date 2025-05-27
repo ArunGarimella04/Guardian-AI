@@ -1,0 +1,126 @@
+.recordings-list {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .recordings-list h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .recordings-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  @media (min-width: 768px) {
+    .recordings-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  .recording-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .recording-info {
+    margin-bottom: 12px;
+  }
+  
+  .recording-date {
+    font-weight: 500;
+    font-size: 14px;
+    color: #444;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .recording-emergency-badge {
+    background-color: #ff4757;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-right: 8px;
+    display: inline-block;
+  }
+  
+  .recording-emotion {
+    font-size: 13px;
+    background-color: #f1f1f1;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+  
+  .recording-transcript {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #555;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    max-height: 60px;
+    overflow-y: auto;
+    font-style: italic;
+  }
+  
+  .recording-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: auto;
+  }
+  
+  .recording-controls audio {
+    width: 100%;
+    height: 36px;
+  }
+  
+  .recording-delete-btn {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    color: #555;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s ease;
+    margin-left: auto;
+    align-self: flex-end;
+  }
+  
+  .recording-delete-btn:hover {
+    background-color: #ffebee;
+    border-color: #ffcdd2;
+    color: #e53935;
+  }
+  
+  .recordings-loading {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+  }
+  
+  .recordings-error {
+    background-color: #ffebee;
+    border: 1px solid #ffcdd2;
+    color: #c62828;
+    padding: 12px 15px;
+    border-radius: 5px;
+    margin: 15px 0;
+  }
+  
+  .recordings-empty {
+    text-align: center;
+    padding: 30px 0;
+    color: #777;
+    font-style: italic;
+  }

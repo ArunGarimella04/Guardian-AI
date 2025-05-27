@@ -1,0 +1,393 @@
+/* Main container styles */
+.emergency-tracker-container {
+  max-width: 800px; /* Reduced from 900px */
+  margin: 0 auto;
+  padding: 15px; /* Reduced from 20px */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+  background-color: #111;
+}
+
+.tracker-header {
+  background: linear-gradient(135deg, #ff4757, #d80e0e);
+  color: white;
+  padding: 15px; /* Reduced from 20px */
+  border-radius: 8px; /* Reduced from 10px */
+  margin-bottom: 15px; /* Reduced from 20px */
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(255, 71, 87, 0.25);
+}
+
+.tracker-header h1 {
+  margin: 0;
+  font-size: 24px; /* Reduced from 28px */
+  font-weight: 600;
+}
+
+.emergency-id {
+  margin-top: 6px; /* Reduced from 8px */
+  font-size: 13px; /* Reduced from 14px */
+  opacity: 0.8;
+  font-family: monospace;
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 3px 6px; /* Reduced from 4px 8px */
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.tracker-content {
+  background-color: #222;
+  border-radius: 10px; /* Reduced from 12px */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 18px; /* Reduced from 25px */
+}
+
+.loading, .error-message {
+  text-align: center;
+  padding: 30px; /* Reduced from 40px */
+  font-size: 15px; /* Reduced from 16px */
+  background-color: #222;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.loading {
+  color: #aaa;
+}
+
+.error-message {
+  color: #ff4757;
+  background-color: rgba(255, 71, 87, 0.1);
+  border: 1px solid rgba(255, 71, 87, 0.3);
+}
+
+.user-details {
+  margin-bottom: 18px; /* Reduced from 25px */
+  padding-bottom: 15px; /* Reduced from 20px */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-details h2 {
+  font-size: 18px; /* Reduced from 20px */
+  color: #fff;
+  margin-bottom: 6px; /* Reduced from 8px */
+}
+
+.user-details p {
+  color: #bbb;
+  margin: 0;
+  font-size: 14px;
+}
+
+.tracker-map-container {
+  margin: 15px 0; /* Reduced from 25px */
+  padding: 15px; /* Reduced from 20px */
+  background-color: #1a1a1a;
+  border-radius: 10px; /* Reduced from 12px */
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+}
+
+.tracker-map-container h3 {
+  margin-bottom: 8px; /* Reduced from 12px */
+  color: #fff;
+  font-size: 16px; /* Reduced from 18px */
+}
+
+.last-updated {
+  color: #aaa;
+  font-size: 13px; /* Reduced from 14px */
+  margin-bottom: 10px; /* Reduced from 15px */
+  font-style: italic;
+}
+
+/* Map container with fixed height */
+.leaflet-container {
+  height: 350px; /* Reduced from 400px */
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1; /* Fix for z-index issues */
+}
+
+.coordinates {
+  margin-top: 15px; /* Reduced from 20px */
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 12px; /* Reduced from 15px */
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px; /* Reduced from 10px */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.coordinates p {
+  margin: 0;
+  padding: 4px 0; /* Reduced from 5px */
+  color: #ddd;
+  font-family: monospace;
+  font-size: 13px; /* Reduced from 14px */
+  flex: 1 1 45%;
+}
+
+.directions-button {
+  display: block;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  text-decoration: none;
+  padding: 10px 18px; /* Reduced from 12px 20px */
+  border-radius: 6px;
+  margin-top: 12px; /* Reduced from 15px */
+  text-align: center;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.directions-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 117, 252, 0.4);
+  background: linear-gradient(135deg, #7c21dc, #3685fc);
+}
+
+/* Add these styles for the directions button loading state */
+.directions-button.loading {
+  position: relative;
+  color: rgba(255, 255, 255, 0.6);
+  background: linear-gradient(135deg, #4a11cb, #1565fc);
+  cursor: wait;
+}
+
+.directions-button.loading::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: calc(50% - 10px);
+  right: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Recording styles for the emergency tracker page */
+.emergency-recordings {
+  margin: 15px 0; /* Reduced from 25px */
+  padding: 15px; /* Reduced from 20px */
+  background-color: #1a1a1a;
+  border-radius: 10px; /* Reduced from 12px */
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+}
+
+.emergency-recordings h3 {
+  margin-bottom: 12px; /* Reduced from 15px */
+  color: #fff;
+  font-size: 16px; /* Reduced from 18px */
+}
+
+.emergency-recordings .recordings-list {
+  max-height: 300px; /* Reduced from 350px */
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.emergency-recordings .recording-item {
+  background-color: rgba(255, 255, 255, 0.05);
+  margin-bottom: 8px; /* Reduced from 12px */
+  padding: 12px; /* Reduced from 15px */
+  border-radius: 6px; /* Reduced from 8px */
+  transition: background-color 0.2s ease;
+}
+
+.emergency-recordings .recording-item:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.emergency-recordings .recording-date {
+  color: #aaa;
+  font-size: 13px; /* Reduced from 14px */
+  display: block;
+  margin-bottom: 6px; /* Reduced from 8px */
+}
+
+.emergency-recordings .recording-audio {
+  width: 100%;
+  margin-top: 6px; /* Reduced from 8px */
+  height: 32px; /* Reduced from 35px */
+  border-radius: 16px; /* Reduced from 20px */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .emergency-tracker-container {
+    padding: 10px; /* Reduced from 15px */
+  }
+  
+  .tracker-content {
+    padding: 12px; /* Reduced from 15px */
+  }
+  
+  .coordinates {
+    flex-direction: column;
+  }
+  
+  .coordinates p {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .tracker-header {
+    padding: 12px; /* Reduced from 15px */
+  }
+  
+  .tracker-header h1 {
+    font-size: 20px; /* Reduced from 22px */
+  }
+  
+  .tracker-map-container,
+  .emergency-recordings {
+    padding: 12px; /* Reduced from 15px */
+  }
+  
+  .leaflet-container {
+    height: 250px; /* Reduced from 300px */
+  }
+}
+
+.map-controls {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.map-control-button {
+  background-color: #2575fc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.map-control-button:hover {
+  background-color: #3685fc;
+}
+
+.map-control-button.active {
+  background-color: #6a11cb;
+}
+
+/* Custom style for responder marker */
+.responder-marker {
+  font-size: 20px;
+  text-align: center;
+}
+
+/* Style the routing control container */
+.leaflet-routing-container {
+  background-color: rgba(34, 34, 34, 0.9);
+  color: #ddd !important; /* Light gray text for better visibility */
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 10px;
+  max-height: 300px !important;
+  overflow-y: auto;
+  width: 300px !important;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  z-index: 1000;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.leaflet-routing-container h2, 
+.leaflet-routing-container h3 {
+  font-size: 16px;
+  color: white;
+  margin: 5px 0;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Fix for direction text color */
+.leaflet-routing-alt {
+  max-height: 200px;
+  overflow-y: auto;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 5px;
+  color: #ddd !important;
+}
+
+/* Make sure table content is clearly visible */
+.leaflet-routing-alt table {
+  font-size: 12px;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Style table cells for better visibility */
+.leaflet-routing-alt td,
+.leaflet-routing-alt th {
+  color: #ddd !important;
+  padding: 6px 3px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Style distance cells specifically */
+.leaflet-routing-alt td:last-child {
+  text-align: right;
+  color: #aaa !important;
+}
+
+/* Add hover effect to rows */
+.leaflet-routing-alt tr:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Style the summary section */
+.leaflet-routing-summary {
+  padding: 5px 0;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Style the instruction icons */
+.leaflet-routing-icon {
+  background-color: #fff;
+  border-radius: 3px;
+  margin-right: 8px;
+  width: 20px;
+  height: 20px;
+}
+
+/* Ensure container stays visible */
+.leaflet-routing-container.leaflet-routing-container-hide {
+  display: block !important;
+  width: auto !important;
+  margin-right: 10px !important;
+  transform: none !important;
+}
+
+/* Style the minimize/maximize button */
+.leaflet-routing-collapse-btn {
+  background-color: rgba(37, 117, 252, 0.8);
+  border-radius: 4px;
+  padding: 2px;
+}
+
+/* Fix for any inherited styles that might be causing problems */
+.leaflet-routing-alt * {
+  color: #ddd !important;
+}
