@@ -196,7 +196,7 @@ The application can be deployed using:
 
 ## Contributors
 
-- [Your Name] - Project Lead & Developer
+- Garimella Arun - Project Lead & Developer
 
 ## License
 
